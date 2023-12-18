@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "M3dStudio", "M3dStudio\M3dStudio.vcxproj", "{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2039B24C-FECA-1BAD-23BD-8A670000002E} = {2039B24C-FECA-1BAD-23BD-8A670000002E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DDSDataCom", "DDSDataCom\DDSDataCom.vcxproj", "{2039B24C-FECA-1BAD-23BD-8A670000002E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Debug|ARM.ActiveCfg = Debug|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Debug|ARM64.ActiveCfg = Debug|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Debug|x64.ActiveCfg = Debug|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Debug|x64.Build.0 = Debug|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Debug|x86.ActiveCfg = Debug|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Release|ARM.ActiveCfg = Release|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Release|ARM64.ActiveCfg = Release|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Release|x64.ActiveCfg = Release|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Release|x64.Build.0 = Release|x64
+		{CC1FCAAB-D917-4EEF-967E-E8FF52AB4703}.Release|x86.ActiveCfg = Release|x64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|ARM.Build.0 = Debug|ARM
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|ARM64.Build.0 = Debug|ARM64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|x64.ActiveCfg = Debug|x64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|x64.Build.0 = Debug|x64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|x86.ActiveCfg = Debug|Win32
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Debug|x86.Build.0 = Debug|Win32
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|ARM.ActiveCfg = Release|ARM
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|ARM.Build.0 = Release|ARM
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|ARM64.ActiveCfg = Release|ARM64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|ARM64.Build.0 = Release|ARM64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|x64.ActiveCfg = Release|x64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|x64.Build.0 = Release|x64
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|x86.ActiveCfg = Release|Win32
+		{2039B24C-FECA-1BAD-23BD-8A670000002E}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEA6909F-3987-4B61-9148-7F56F7C1ACA5}
+		Qt5Version = msvc2017_64
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+^E:\华中科技大学（研究生）\M3D软件\0923\M3D\DDSDATACOM\DEMOTYPESUPPORT.IDL
+setlocal
+PATH=%PATH%;D:\opendds\ACE_wrappers\lib
+cmd /c "D:\opendds\ACE_wrappers\bin\tao_idl -Wb,pre_include=ace/pre.h -Wb,post_include=ace/post.h -ID:\opendds\ACE_wrappers\TAO --idl-version 4 --unknown-annotations ignore -Sa -St -ID:\opendds\OpenDDS-3.14 "DemoTypeSupport.idl""
+endlocal
+^E:\华中科技大学（研究生）\M3D软件\0923\M3D\DDSDATACOM\DEMO.IDL
+setlocal
+PATH=%PATH%;D:\opendds\ACE_wrappers\lib;D:\opendds\ACE_wrappers\lib
+cmd /c "D:\opendds\ACE_wrappers\bin\tao_idl -Wb,pre_include=ace/pre.h -Wb,post_include=ace/post.h -ID:\opendds\ACE_wrappers\TAO --idl-version 4 --unknown-annotations ignore -Sa -St -ID:\opendds\OpenDDS-3.14 "Demo.idl" && cmd /c "D:\opendds\OpenDDS-3.14\bin\opendds_idl -Sa -St "Demo.idl""
+endlocal

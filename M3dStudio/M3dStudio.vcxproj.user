@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerEnvironment>PATH=$(OCC_ROOT)\opencascade-7.5.0\win64\vc14\bin;$(OCC_ROOT)\openvr-1.14.15-64\bin\win64;$(OCC_ROOT)\qt5.11.2-vc14-64\bin;$(OCC_ROOT)\freeimage-3.17.0-vc14-64\bin;$(OCC_ROOT)\ffmpeg-3.3.4-64\bin;$(OCC_ROOT)\tbb_2017.0.100\bin\intel64\vc14;E:\华中科技大学（研究生）\M3D软件\0923\M3d\DDSDataCom\Output;D:\PyTorch\libtorch-1.10.0+cu113\lib;%PATH%</LocalDebuggerEnvironment>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>
+    </LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerEnvironment>PATH=$(OCC_ROOT)\opencascade-7.5.0\win64\vc14\bin;$(OCC_ROOT)\openvr-1.14.15-64\bin\win64;$(OCC_ROOT)\qt5.11.2-vc14-64\bin;$(OCC_ROOT)\freeimage-3.17.0-vc14-64\bin;$(OCC_ROOT)\ffmpeg-3.3.4-64\bin;$(OCC_ROOT)\tbb_2017.0.100\bin\intel64\vc14;%PATH%</LocalDebuggerEnvironment>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtLastBackgroundBuild>2023-12-18T14:07:40.6779218Z</QtLastBackgroundBuild>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtLastBackgroundBuild>2023-12-18T14:07:40.8754343Z</QtLastBackgroundBuild>
+  </PropertyGroup>
+</Project>

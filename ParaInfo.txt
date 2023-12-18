@@ -1,0 +1,68 @@
+k	Real	1.1616
+w	Real	4590
+D	Real	0.6
+J	SI.Inertia	0.0013	kg.m2	
+ratio	Real	-105
+Rv0	SI.Torque	0.4	N.m
+Rv1	Real	0.0008125	N.m.s/rad
+peak	Real	1
+gear
+ spring
+  phi_rel0	Real	0	rad
+ bearingFriction
+  peak	Real	1
+  w_small	Real	1e+10	rad/s
+motor
+ w_max	SI.AngularVelocity	315	rad/s
+ i_max	SI.Current	9	A
+ Ra
+  R	Modelica.SIunits.Resistance	250	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K
+ Rd2
+  R	Modelica.SIunits.Resistance	100	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K
+ Rd1
+  R	Modelica.SIunits.Resistance	100	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K
+ Ri
+  R	Modelica.SIunits.Resistance	10	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K
+ Rp1
+  R	Modelica.SIunits.Resistance	200	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K
+ Rp2
+  R	Modelica.SIunits.Resistance	50	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K
+ Rd4
+  R	Modelica.SIunits.Resistance	100	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K
+ Rd3
+  R	Modelica.SIunits.Resistance	100	Ohm
+  T_ref	Modelica.SIunits.Temperature	300.15	K
+  alpha	Modelica.SIunits.LinearTemperatureCoefficient	0	1/K	
+ convert1
+  k	Real	1
+ convert2
+  k	Real	1
+controller
+ PI
+  x_start	Real	0
+  y_start	Real	0
+ add3
+  k1	Real	1
+  k2	Real	1
+  k3	Real	-1
+ k	Real	0
+c	Real	43	N.m/rad
+cd	Real	0.005	N.m.s/rad
+
+connector 
+Flange	Modelica.Mechanics.Rotational.Interfaces.Flange_b
+AxisControlBus	Modelica.Mechanics.MultiBody.Examples.Systems.RobotR3.Components.AxisControlBus

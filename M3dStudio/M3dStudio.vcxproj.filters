@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="NewDocDlg.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslateDialog.cxx">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Transparency.cxx">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="View.cxx">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="OcctWindow.cxx">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="GeomWidget.cxx">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Translate.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="global.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Connector.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="ParaTreeModel.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FeatureButton.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DatumPointDlg.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DatumLineDlg.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsDockWidget.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsTableWidget.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsDockWidget.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsTableWidget.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="DocumentComponent.cxx">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="DocumentCommon.cxx">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectorDlg.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="AdaptorVec_AIS.cxx">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="CyberInfoDockWidget.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DocumentModel.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyCommand.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="RepostureCommand.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="materialSetDlg.cpp">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelWidget.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="ParaDockWidget.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AIS_myManipulator.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CyberInfo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ComAttriDlg.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="voxel.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="moTreeDlg.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="libLoadThread.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelicaModel.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="RepostureDlg.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageShowDlg.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="LibPathsSetDlg.cpp">
+      <Filter>CommonWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="CSV_Parser.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="animationThread.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="GenerateMo.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyTreeWidget.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelLibWidget.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectCommand.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationWidget.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectCommand.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateThread.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="SimulateSetDlg.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="DigitaltwinsWidget.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="TwinAnimationThread.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="NeuralnetworkWidget.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+    <ClCompile Include="MarkingSurfDlg.cpp">
+      <Filter>M3dCom</Filter>
+    </ClCompile>
+    <ClCompile Include="NeuralNetworkInfo.cpp">
+      <Filter>M3dMdl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="M3dCom">
+      <UniqueIdentifier>{76332ab1-085d-4e27-9b66-255c625695fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonWindow">
+      <UniqueIdentifier>{38aaf58e-2b6f-4a26-9be0-b87ae9b30659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="M3dMdl">
+      <UniqueIdentifier>{4eaa4e6f-5ec9-4aa4-8b06-ead442fac0c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{36dfdcd9-d803-4dfa-bfbd-3e8feb158583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{8062988a-1bd5-4ddf-9bc3-85d612db6faa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{2e48d8e4-df98-4404-a9f1-d3834b03b0e9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="NewDocDlg.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="Transparency.h">
+      <Filter>CommonWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="View.h">
+      <Filter>CommonWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="GeomWidget.h">
+      <Filter>CommonWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="Translate.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="ParaTreeModel.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="FeatureButton.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="DatumPointDlg.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="DatumLineDlg.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="ConsDockWidget.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+    <QtMoc Include="ConsTableWidget.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+    <QtMoc Include="ConsDockWidget.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+    <QtMoc Include="ConsTableWidget.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+    <QtMoc Include="ConnectorDlg.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+    <QtMoc Include="CyberInfoDockWidget.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="DocumentCommon.h">
+      <Filter>CommonWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="materialSetDlg.h">
+      <Filter>CommonWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="voxelWidget.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+    <QtMoc Include="ParaDockWidget.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="ComAttriDlg.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="moTreeDlg.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+    <QtMoc Include="libLoadThread.h">
+      <Filter>Header</Filter>
+    </QtMoc>
+    <QtMoc Include="RepostureDlg.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="ImageShowDlg.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="LibPathsSetDlg.h">
+      <Filter>CommonWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="animationThread.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="AssemblyTreeWidget.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="ModelLibWidget.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="AnimationWidget.h">
+      <Filter>Source</Filter>
+    </QtMoc>
+    <QtMoc Include="SelectCommand.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="UpdateThread.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="SimulateSetDlg.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="DigitaltwinsWidget.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="TwinAnimationThread.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="NeuralnetworkWidget.h">
+      <Filter>M3dMdl</Filter>
+    </QtMoc>
+    <QtMoc Include="MarkingSurfDlg.h">
+      <Filter>M3dCom</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="M3d.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslateDialog.h">
+      <Filter>CommonWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="OcctWindow.h">
+      <Filter>CommonWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DocumentComponent.h">
+      <Filter>M3dCom</Filter>
+    </ClInclude>
+    <ClInclude Include="DocumentModel.h">
+      <Filter>M3dMdl</Filter>
+    </ClInclude>
+    <ClInclude Include="AdaptorVec_AIS.h">
+      <Filter>M3dCom</Filter>
+    </ClInclude>
+    <ClInclude Include="AssemblyCommand.h">
+      <Filter>M3dMdl</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>M3dMdl</Filter>
+    </ClInclude>
+    <ClInclude Include="RepostureCommand.h">
+      <Filter>M3dMdl</Filter>
+    </ClInclude>
+    <ClInclude Include="AIS_myManipulator.hxx">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Connector.h">
+      <Filter>M3dCom</Filter>
+    </ClInclude>
+    <ClInclude Include="geoGonstraint.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="cyberInfo.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="voxel.h">
+      <Filter>M3dCom</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelicaModel.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CSV_Parser.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectCommand.h">
+      <Filter>M3dMdl</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>res</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuralNetworkInfo.h">
+      <Filter>M3dMdl</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint">
+      <Filter>res</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>res</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="M3d.qrc">
+      <Filter>res</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="m3d.rc">
+      <Filter>res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

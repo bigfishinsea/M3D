@@ -1,0 +1,2 @@
+1.高亮功能无法实现。具体为：通过命名获得TopoDS_Shape并生成AIS_Shape用于显示，但是context无法选中AIS_Shape，使用函数为AIS_InteractiveContext::AddSelect()和AIS_InteractiveContext::SetSelected()
+2.Import另外一个实体，之前实体的约束表仍然被保留

@@ -1,0 +1,14 @@
+Controller  
+ Real	kp	10	Gain of position controller  
+ Real	ks	1	Gain of speed controller  
+ Modelica.SIunits.Time	Ts	0.01	Time constant of integrator of speed controller  
+Motor  
+ Real	k	1.1616	Gain of motor  
+ Real	w	4590	Time constant of motor  
+ Real	D	0.6	Damping constant of motor  
+ Modelica.SIunits.Inertia	J	0.0013	Moment of inertia of motor  
+Gear  
+ Real	ratio	-105	Gear ratio  
+ Modelica.SIunits.Torque	Rv0	0.4	Viscous friction torque at zero velocity in [Nm]  
+ Real	Rv1	(0.13 / 160)	N.m.s/rad	Viscous friction coefficient in [Nms/rad]  
+ Real	peak	1	Maximum static friction torque is peak*Rv0 (peak >= 1) 

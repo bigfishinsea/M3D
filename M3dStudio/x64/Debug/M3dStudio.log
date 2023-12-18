@@ -1,0 +1,15 @@
+﻿  DocumentModel.cpp
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4710,16): warning C4477: “fprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 2 拥有了类型“unsigned __int64”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4710,16): message : 请考虑在格式字符串中使用“%zd”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4710,16): warning C4477: “fprintf_s”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“unsigned __int64”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4710,16): message : 请考虑在格式字符串中使用“%zd”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4652): warning C4700: 使用了未初始化的局部变量“fp1”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4659): warning C4700: 使用了未初始化的局部变量“fp2”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4666): warning C4700: 使用了未初始化的局部变量“fp3”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4673): warning C4700: 使用了未初始化的局部变量“fp4”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4680): warning C4700: 使用了未初始化的局部变量“fp5”
+E:\华中科技大学（研究生）\M3D软件\0923\M3d\M3dStudio\DocumentModel.cpp(4687): warning C4700: 使用了未初始化的局部变量“fp6”
+  LINK :32 位链接器(C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\link.exe)未能在“D:\PyTorch\libtorch-1.10.0+cu113\lib\dnnl.lib”上执行内存映射文件 I/O，即将重启与 64 位链接器的链接以实现更好的吞吐量
+  LINK :正在重启与 64 位链接器“C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\link.exe”的链接
+    正在创建库 E:\华中科技大学（研究生）\M3D软件\0923\M3d\x64\Debug\M3dStudio.lib 和对象 E:\华中科技大学（研究生）\M3D软件\0923\M3d\x64\Debug\M3dStudio.exp
+  M3dStudio.vcxproj -> E:\华中科技大学（研究生）\M3D软件\0923\M3d\x64\Debug\M3dStudio.exe

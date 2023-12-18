@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/M3dCom">
+        <file>images/new.png</file>
+        <file>images/save.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,9 @@
+module XDataIdlModule {
+  @topic
+  struct XDataTopic1 {
+    @key string id;
+    string destination;
+    double tTimer;
+    string vData;
+  };
+};
