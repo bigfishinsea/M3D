@@ -287,15 +287,8 @@ void DisplaceComponent_new(DocumentModel* pModel, Component* pCom, gp_Trsf& trsf
 	//
 	//pModel->SetCompLocation(pCom, trsfFrom_TO);
 
-	gp_Ax3 ax3To;
 	gp_Pnt p0To = gp_Pnt(trsf.Value(1, 4), trsf.Value(2, 4), trsf.Value(3, 4));
-	ax3To.SetLocation(p0To);
-	gp_Dir XTo = gp_Dir(trsf.Value(1, 1), trsf.Value(1, 2), trsf.Value(1, 3));
-	ax3To.SetXDirection(XTo);
-	gp_Dir ZTo = gp_Dir(trsf.Value(3, 1), trsf.Value(3, 2), trsf.Value(3, 3));
-	ax3To.SetDirection(ZTo);  //3行4列
 
-	gp_Ax3 axFrom;// = m_pModel->GetCompConnLocalAx3(pCom->GetCompName().c_str(), "frame_a");
 	gp_Ax3 ax31 = pModel->GetCompConnGlobalAx3(pCom->GetCompName().c_str(), "frame_a");
 
 	if (i == 0) //计算点的移动
@@ -319,7 +312,7 @@ void DisplaceComponent_new(DocumentModel* pModel, Component* pCom, gp_Trsf& trsf
 		trsf.Value(2, 1), trsf.Value(2, 2), trsf.Value(2, 3), 0/*trsf.Value(2, 4) - axFrom0.Location().Y()*/, \
 		trsf.Value(3, 1), trsf.Value(3, 2), trsf.Value(3, 3), 0/*trsf.Value(3, 4) - axFrom0.Location().Z()*/);
 
-	//先平移到原点
+	//先平移到原点，不平移到原点旋转的话，会出现问题，因为这样旋转虽然姿态是正确的，但旋转过程会导致位置的移动，可以在脑海中想象一下这个过程
 	gp_Trsf trsfTr0; //从当前点，移动到原点
 	gp_Pnt Po(0, 0, 0);
 	trsfTr0.SetTranslation(ax31.Location(), Po);
