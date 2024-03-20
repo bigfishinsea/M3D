@@ -3944,7 +3944,7 @@ void DocumentModel::GenTrainSet(vector<string>& ControlVarsNames, vector<vector<
 	GenTrainpyFile(ControlVarsNames, samples, InputNames, OutputNames);
 
 	//执行脚本，生成多个Result.csv文件	
-	CallSolverTrain(saveCompareRaw);
+	//CallSolverTrain(saveCompareRaw);
 	
 	//读取Result.csv文件，利用这些文件生成仿真训练的数据集文件
 	//旧版，fann版本
@@ -3987,7 +3987,7 @@ string DocumentModel::GetfannSavePath()
 void DocumentModel::GenTrainpyFile(vector<string>& ControlVarsNames, vector<vector<double>>& samples, vector<string>& InputNames, vector<string>& OutputNames)
 {
 	string pyfile;
-	string first = "#加载指定的Modelica模型文件\n";
+	string first = "# Load the modelica file from the path you set\n";
 	string second;
 	vector<string> AllLibPaths;
 	AllLibPaths.clear();
@@ -3997,18 +3997,18 @@ void DocumentModel::GenTrainpyFile(vector<string>& ControlVarsNames, vector<vect
 		string statement = "print(OpenModelFile(r\"" + AllLibPaths[i] + "\",True))\n";
 		second += statement;
 	}
-	string third = "#仿真模型\n";
+	string third = "# Simulate model\n";
 	string sWorkDir = LibPathsSetDlg::GetWorkDir();
 	if (sWorkDir.back() != '/')
 	{
 		sWorkDir += "/";
 	}
 	string saveCompareRaw = sWorkDir + m_pCompRoot->GetCompName() + "/";//对不同模型有不同文件夹的相对路径
+
+	string forth = "print(SimulateModel(model_name='" + m_pCompRoot->GetCompName() + "',start_time=" + to_string(SimulateSetDlg::GetStarttime()) + ",stop_time=" + to_string(SimulateSetDlg::GetEndtime());
+	forth += ",number_of_intervals=" + to_string(SimulateSetDlg::GetMWorks_NumberOfIntervals()) + ",algo=" + SimulateSetDlg::GetMWorks_Method() + "))\n";
 	
-	string forth = "print(SimulateModel(model_name='" + m_pCompRoot->GetCompName() + "',start_time=0,stop_time=5";
-	forth += ",number_of_intervals=500,algo=Integration.Dassl, integral_step=0.004))\n";
-	
-	string fifth = "#导出结果文件\n";
+	string fifth = "# Export result file\n";
 	string AllAniVariables;
 	AllAniVariables += "[";
 	
@@ -4327,7 +4327,7 @@ bool DocumentModel::GenPyTrainSetFromCSVDiffCompNew(const QString& saveComparePa
 	}
 
 	// 读取.csv文件，进行数据填充
-	int rowsbycsv = 30; // 每个csv文件取30行数据
+	int rowsbycsv = 60; // 每个csv文件取30行数据
 	for (int i = 0; i < samplesize; i++)
 	{
 		QString csvFilePath = saveComparePath + "Train/Result" + QString::fromStdString(std::to_string(i)) + ".csv";

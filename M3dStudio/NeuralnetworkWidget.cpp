@@ -399,7 +399,7 @@ void NeuralnetworkWidget::ClickButtonGenTrainSet()
 	}
 
 	int dimension = ControlVarsNames.size();
-	int n = 500; //先设置样本数目默认500，之后再进行调整
+	int n = 200; //先设置样本数目默认500，之后再进行调整
 	vector<vector<double>> samples = latin_hypercube(dimension, n, ranges, false); //默认先不使用拒绝采样
 
 

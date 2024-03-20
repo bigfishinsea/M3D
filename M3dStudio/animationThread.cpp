@@ -329,6 +329,7 @@ void DisplaceComponent_new(DocumentModel* pModel, Component* pCom, gp_Trsf& trsf
 	gp_Trsf trsfTr1; //从当前点，移动到原点
 	trsfTr1.SetTranslation(Po, p0To);
 
+	//从初始位置，绕世界坐标系的转换矩阵（左乘）
 	pModel->SetCompLocation(pCom, trsfTr1 * trsf * originTrsf * trsfTr0);
 }
 

@@ -126,7 +126,7 @@ void SimulateSetDlg::dpDlgInit()
 	NumberOfIntervalsEdit->setReadOnly(false); //可编辑
 	NumberOfIntervalsEdit->setText(QString::number(MWorks_NumberOfIntervals));
 	NumberOfIntervalsEdit->setMinimumHeight(25);
-	NumberOfIntervalsEdit->setValidator(new QIntValidator(1, 1000, this));//范围
+	NumberOfIntervalsEdit->setValidator(new QIntValidator(1, 100000, this));//范围
 
 	SetAlgo = new QLabel("选择求解方式：");
 	SetAlgo->setMinimumHeight(25);
