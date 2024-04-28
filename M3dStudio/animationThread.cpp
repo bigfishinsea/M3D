@@ -481,7 +481,6 @@ void AnimationThread::run()
 		vector<gp_Trsf> vecDirectionP0;
 		
 		map<string, double> mapCompRab;           //记录frame_a到frame_b的r的初始长度
-		map<int, double> TimeDifferences;         //记录休息的时间间隔
 		double LastStep_time = 0;                 //记录上一步的时间
 		int CurrentStepInterval = 1;              //记录当前步长间隔
 		for (int i = 0; i < timeSeries.size();)

@@ -989,7 +989,7 @@ void DynamicCurveDisplayDlg::CurveDisplayDlgInit(string VariableName, vector<int
 	//根据列名获取所有点的信息
 	vector<double> timeSeries;
 	vector<double> paraSeries;
-	vector<vector<string>> AllDatas = m_pStoredData->AllDatas;
+	vector<vector<string>> AllDatas = m_pStoredData->GetAllDatas();
 	lasttime = -1;
 	for (int i = 0; i < AllDatas.size(); i++)
 	{
@@ -1079,7 +1079,7 @@ void DynamicCurveDisplayDlg::ParaChanged()
 	vector<double> paraSeries;
 	StoredData* m_pStoredData = m_parent->GetStoredData();
 	vector<string> ParaNames = m_pStoredData->GetParameterNmaes();
-	vector<vector<string>> AllDatas = m_pStoredData->AllDatas;
+	vector<vector<string>> AllDatas = m_pStoredData->GetAllDatas();
 	int col = -1;
 	for (int i = 0; i < ParaNames.size(); i++)
 	{
@@ -1143,7 +1143,7 @@ void DynamicCurveDisplayDlg::slotTimeout()
 {
 	m_timer->stop();
 	StoredData* m_pStoredData = m_parent->GetStoredData();
-	vector<vector<string>> AllDatas = m_pStoredData->AllDatas;
+	vector<vector<string>> AllDatas = m_pStoredData->GetAllDatas();
 	vector<string> ParaNames = m_pStoredData->GetParameterNmaes();
 	bool havecleared = false;//是否有被清空过
 	if (pretoreadRow < AllDatas.size())

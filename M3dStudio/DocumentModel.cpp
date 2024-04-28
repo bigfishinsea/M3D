@@ -3944,7 +3944,7 @@ void DocumentModel::GenTrainSet(vector<string>& ControlVarsNames, vector<vector<
 	GenTrainpyFile(ControlVarsNames, samples, InputNames, OutputNames);
 
 	//执行脚本，生成多个Result.csv文件	
-	//CallSolverTrain(saveCompareRaw);
+	CallSolverTrain(saveCompareRaw);
 	
 	//读取Result.csv文件，利用这些文件生成仿真训练的数据集文件
 	//旧版，fann版本

@@ -5,6 +5,8 @@
 #define DLL __declspec(dllimport)
 #endif
 #include "DemoTypeSupportImpl.h"
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -33,22 +35,62 @@ public:
 		ParameterNames = parameternames;
 	};
 
-	//增加行数据
-	void AddRowData(vector<string> rowdata)
-	{
-		AllDatas.push_back(rowdata);
-	};
-
 	vector<string> GetParameterNmaes() {
 		return ParameterNames;
 	}
 
+	//增加行数据
+	void AddRowData(vector<string> rowdata)
+	{
+		if (AllDatas.size() > 10000) {
+			vector<string> originData = AllDatas[0];
+			// 保存到文件
+			string filePath = "output" + std::to_string(nextSavedFile) + ".txt";
+			nextSavedFile++;
+			nextSavedFile %= maxSavedFiles;
+			SaveToFile(AllDatas, filePath);
+			AllDatas = vector<vector<string>>(1);
+			AllDatas[0] = originData;
+		}
+		AllDatas.push_back(rowdata);
+	};
+
+	pair<bool, vector<string>> GetRowData(int row) {
+		if (row < AllDatas.size()) {
+			return make_pair(true, AllDatas[row]);
+		}
+		else {
+			return make_pair(false, vector<string>());
+		}
+	}
+
+	vector<vector<string>> GetAllDatas() {
+		return AllDatas;
+	}
 private:
 	vector<string> ParameterNames;
+	
+	void SaveToFile(const std::vector<std::vector<std::string>>& data, const std::string& filename) {
+		std::ofstream outputFile(filename, std::ofstream::trunc);
 
-public:
+		if (!outputFile.is_open()) {
+			return;
+		}
+
+		// 将数据写入文件
+		for (const auto& row : data) {
+			for (const auto& value : row) {
+				outputFile << value << ";";
+			}
+			outputFile << "\n"; // 在每一行结束时添加换行符
+		}
+
+		outputFile.close();
+	}
+
 	vector<vector<string>> AllDatas;
-	vector<double> time;
+	int maxSavedFiles = 10;
+	int nextSavedFile = 0;
 };
 
 

@@ -238,7 +238,9 @@ void TwinAnimationThread::run()
 	map<int, vector<int>> transferTIdx;
 	// 保存不同神经网络的输入元素索引
 	map<int, vector<int>> netInputIdx;
-	initNeuralNetwork(vecNetworkInfos, parameternames, transferTIdx, netInputIdx);
+	if (m_DigWid->getIsUseNet()) {
+		initNeuralNetwork(vecNetworkInfos, parameternames, transferTIdx, netInputIdx);
+	}
 
 	
 	//读取组件位姿所在列
@@ -263,13 +265,15 @@ void TwinAnimationThread::run()
 
 	vector<gp_Vec> vecDeltaP0;                //记录frame_a的偏移
 	map<string, double> mapCompRab;           //记录frame_a到frame_b的r的初始长度
-	int nowreaded = -1;//目前已经读到的行数，为-1代表还没读取任何行
+	int nowreaded = 0;                        //目前已经读到的行数
 	while (1) {
-		int nowdatasize = m_pStoredData->AllDatas.size();
-		while (nowreaded < (nowdatasize - 1))
-		{
-			nowreaded++;
-			vector<string> nowdata = m_pStoredData->AllDatas[nowreaded];
+		pair<bool, vector<string>> nowPair = m_pStoredData->GetRowData(nowreaded);
+		if (nowPair.first == false) {
+			if (nowreaded > 1 && m_pStoredData->GetRowData(nowreaded - 1).first == false) {
+				nowreaded = 1;
+			}
+		}else{
+			vector<string> nowdata = nowPair.second;
 			string now_str_data;
 			now_str_data += "收到数据：";
 			for (int i = 0; i < nowdata.size(); i++)
@@ -282,7 +286,9 @@ void TwinAnimationThread::run()
 			emit SendReceivedMsg();
 
 			// 对接收到的数据用神经网络进行处理
-			runNeuralNetwork(vecNetworkInfos, nowdata, transferTIdx, netInputIdx);
+			if (m_DigWid->getIsUseNet()) {
+				runNeuralNetwork(vecNetworkInfos, nowdata, transferTIdx, netInputIdx);
+			}
 
 			//利用接收到的数据驱动组件运动
 			auto itr = m_vComponents.begin();
@@ -369,10 +375,9 @@ void TwinAnimationThread::run()
 			pauseLock.lock();
 			emit rep();
 			pauseLock.unlock();
-			nowdatasize = m_pStoredData->AllDatas.size();
+			nowreaded++;
+			nowreaded %= 10000;
 		}
-		// 注释掉，这个会让画面一卡一卡的
-		// Sleep(300);//如果目前已经读到了最后一行，那么稍等300ms，再判断有没有新数据
 	}
 }
 
