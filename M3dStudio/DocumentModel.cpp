@@ -97,15 +97,18 @@ DocumentModel::DocumentModel(MainWindow* theApp)
 
 	m_pAnimateThread = new AnimationThread(this);
 	m_pTwinAniThread = new TwinAnimationThread(this);
+	m_pErrorMonitorThread = new ErrorMonitorThread(this);
 }
 
 DocumentModel::~DocumentModel()
 {
 	m_pAnimateThread->wait();  //必须等待线程结束
 	m_pTwinAniThread->wait();
+	m_pErrorMonitorThread->wait();
 	delete m_pCompRoot;
 	delete m_pAnimateThread;
 	delete m_pTwinAniThread;
+	delete m_pErrorMonitorThread;
 }
 
 //得做点什么...
@@ -3888,7 +3891,7 @@ bool DocumentModel::TwinDriveModel() {
 }
 
 //初始化订阅和监听
-int DocumentModel::InitSubsAndListner(int discoveryMehodID) {
+int DocumentModel::InitSubsAndListner(int discoveryMehodID, bool startMonitor) {
 	//将数据指针传给孪生动画线程
 	StoredData* m_pStoredData = new StoredData();
 	if (m_pTwinAniThread->m_pStoredData != nullptr) {
@@ -3907,6 +3910,15 @@ int DocumentModel::InitSubsAndListner(int discoveryMehodID) {
 	MainWindow* pMain = (MainWindow*)parent();
 	connect(m_pTwinAniThread, SIGNAL(rep()), pMain, SLOT(repaint0()), Qt::BlockingQueuedConnection);
 	m_pTwinAniThread->start();
+
+	if (startMonitor) {
+		if (m_pErrorMonitorThread->m_pStoredData != nullptr) {
+			delete m_pErrorMonitorThread->m_pStoredData;
+		}
+		m_pErrorMonitorThread->m_pStoredData = m_pStoredData;
+		m_pErrorMonitorThread->start();
+	}
+	
 	return InitSubscribe(m_pStoredData, discoveryMehodID);
 }
 
@@ -3922,6 +3934,16 @@ int DocumentModel::EndSubsAndListner() {
 		m_pTwinAniThread = nullptr;                   //重新初始化
 	}
 	m_pTwinAniThread = new TwinAnimationThread(this);
+
+	if (m_pErrorMonitorThread != NULL) {
+		m_pErrorMonitorThread->terminate();                //停止线程
+		m_pErrorMonitorThread->wait();
+		delete m_pErrorMonitorThread;
+		m_pErrorMonitorThread = nullptr;                   //重新初始化
+	}
+	m_pErrorMonitorThread = new ErrorMonitorThread(this);
+
+
 	return EndSubscribe();
 }
 

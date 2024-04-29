@@ -2,6 +2,7 @@
 #define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
 
 #include "TwinAnimationThread.h"
+#include "ErrorMonitorThread.h"
 #include <Standard_WarningsDisable.hxx>
 #include <QObject>
 #include <QList>
@@ -20,6 +21,7 @@ class MainWindow;
 class Component;
 class AnimationThread;
 class TwinAnimationThread;
+class ErrorMonitorThread;
 
 
 class DocumentModel : public DocumentCommon
@@ -122,6 +124,9 @@ private:
 	//孪生动画线程
 	TwinAnimationThread* m_pTwinAniThread;
 
+	//故障监测线程
+	ErrorMonitorThread* m_pErrorMonitorThread;
+
 public:
 	virtual string GetShapeName(const TopoDS_Shape& shpSel) const;
 	virtual vector<Connector*> GetConnectors() const;
@@ -204,10 +209,11 @@ private://动画需要的
 	vector<Component*> m_vDescendants;
 
 public://与数字孪生相关的函数
-	int InitSubsAndListner(int discoveryMehodID);     //初始化订阅和监听
-	int EndSubsAndListner();                          //结束订阅和监听
-	string GetReceivedMsg();                          //获取接收到的信息
-	TwinAnimationThread* GetTwinAniThread() { return m_pTwinAniThread; };       //获取孪生动画线程的指针
+	int InitSubsAndListner(int discoveryMehodID, bool startMonitor);     //初始化订阅和监听
+	int EndSubsAndListner();                                             //结束订阅和监听
+	string GetReceivedMsg();                                             //获取接收到的信息
+	TwinAnimationThread* GetTwinAniThread() { return m_pTwinAniThread; };          //获取孪生动画线程的指针
+	ErrorMonitorThread* getErrorMonitorThread() { return m_pErrorMonitorThread; }  // 获取故障监测线程的指针
 	LPCWSTR stringToLPCWSTR(std::string orig);
 
 	void GenTrainSet(vector<string>& ControlVarsNames, vector<vector<double>>& samples, vector<string>& InputNames, vector<string>& OutputNames);      //生成神经网络训练集
@@ -231,4 +237,3 @@ public slots:
 	void exctReadStandardOutput();
 	void exctEnd(int, QProcess::ExitStatus);
 };
-

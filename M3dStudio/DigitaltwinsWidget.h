@@ -31,6 +31,7 @@ QT_CHARTS_USE_NAMESPACE
 using namespace std;
 
 class DynamicChart;
+class ErrorMonitorDlg;
 
 
 class DigitaltwinsWidget :public QWidget {
@@ -44,6 +45,8 @@ public:
 	bool getIsUseNet();
 	bool getCanLoadNet();
 	vector<pair<NeuralNetworkInfo, bool>> getNetworkInfos() { return m_data; } // 获得神经网络信息
+	ErrorMonitorDlg* getErrorMonitorDlg() { return errorMonitorDlg; };         // 获得故障监测栏
+	bool hasCreatedMonitorDlg = false;                                         //标识是否创建过故障监测栏
 
 
 private slots:
@@ -60,6 +63,7 @@ private slots:
 	void ClickButtonDelLine();
 	void ClickButtonCheckConfig();
 	void currentItemChangedSLOT(QTableWidgetItem*, QTableWidgetItem*);    //更新表格内容
+	void ClickButtonErrorMonitor();
 	
 
 public slots:
@@ -136,7 +140,60 @@ private:
 	QTextEdit* ReceivedMessage;                     //已收到信息框
 	QString MessageDisplay;                         //已收到消息
 
+	//5.故障监测栏
+	QPushButton* PushButtonErrorMonitor;            //设置故障监测的参数
+	ErrorMonitorDlg* errorMonitorDlg = nullptr;     //故障监测栏
 
+
+
+
+};
+
+class ErrorMonitorDlg : public QDialog
+{
+	Q_OBJECT
+public:
+	ErrorMonitorDlg(QDialog* parent = nullptr);
+	~ErrorMonitorDlg();
+	string getParaName() { return paraName; };
+	string getClassifierPath() { return classifierPath; };
+	double getWindowLength() { return windowLength; };
+	bool isStart() { return isStartMonitor; };
+
+signals:
+
+
+private slots:
+	void clickButtonStart();
+	void clickButtonEnd();
+	void paraNameErrorMsg();
+	void classifierPathErrorMsg();
+	void errorAlarmMsg();
+
+
+
+private:
+	QDialog* Parent;
+	void errorMonitorDlgInit();
+	QFont font;
+	QString BtnStyle;
+
+
+	QLabel* paraNameShow;                   //监测的参数名称
+	QLineEdit* paraNameEdit;                //参数名称编辑栏
+	QLabel* classifierPathShow;             //分类器路径
+	QLineEdit* classifierPathEdit;          //分类器路径编辑栏
+	QLabel* windowLengthShow;               //采样窗口长度
+	QDoubleSpinBox* windowLengthEdit;      //采样窗口长度编辑栏
+
+	QPushButton* pushButtonStart;           //开始监视
+	QPushButton* pushButtonEnd;             //结束监视
+	bool isStartMonitor = false;            //是否开始监视（有校验逻辑，会检查输入是否为空）
+
+
+	string paraName;
+	string classifierPath;
+	double windowLength;
 
 
 };

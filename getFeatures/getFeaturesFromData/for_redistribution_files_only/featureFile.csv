@@ -1,0 +1,2 @@
+meanValue,medianValue,standardDeviation,meanAbsoluteDeviation,quantile25,quantile75,signalIQR,sampleSkewness,sampleKurtosis,spectralEntropy,dominantFrequencyValue,dominantFrequencyMagnitude,dominantFrequencyRatio
+0.503202538478395,0.749157468,0.38087446946231,0.322083362233844,0.2847716635,0.749647027,0.4648753635,-1.19156835773229,2.725391802435,-0.0959471880809534,0,0.0958672279955823,1

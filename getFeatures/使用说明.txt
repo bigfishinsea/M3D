@@ -1,0 +1,6 @@
+将文件夹放到未安装Matlab的电脑上。
+
+运行for_redistribution中的MyAppInstaller_mcr.exe文件，安装Matlab Runtime；
+运行for_redistribution_files_only中的.exe文件
+
+输入 ----> dataFile.csv ----> 运行exe文件 ----> 输出 ----> featureFile.csv

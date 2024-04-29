@@ -191,6 +191,13 @@ void DigitaltwinsWidget::dpWidInit()
 	ReceivedMessage = new QTextEdit(this);
 	ReceivedMessage->setText("请先进行初始化匹配，待接收到参数名称后，再进行神经网络加载（若不加载神经网络，须点击“不使用”按钮），加载完成后即可使用神经网络进行位姿计算...\n");
 
+	
+	//5.故障监测栏
+	PushButtonErrorMonitor = new QPushButton(this);
+	PushButtonErrorMonitor->setText("故障监测设置");
+	PushButtonErrorMonitor->setFixedSize(400, 25);
+	connect(PushButtonErrorMonitor, SIGNAL(clicked()), this, SLOT(ClickButtonErrorMonitor()));
+
 
 	//布局
 	QHBoxLayout* HorinztalLayout1 = new QHBoxLayout(this);
@@ -237,6 +244,9 @@ void DigitaltwinsWidget::dpWidInit()
 	QHBoxLayout* HorinztalLayout9 = new QHBoxLayout(this);
 	HorinztalLayout9->addWidget(outputtreeview);
 
+	QHBoxLayout* HorinztalLayoutError = new QHBoxLayout(this);
+	HorinztalLayoutError->addWidget(PushButtonErrorMonitor);
+
 	VerticalLayout->setSpacing(15);
 	VerticalLayout->addLayout(HorinztalLayout1);
 	VerticalLayout->addLayout(HorinztalLayout2);
@@ -250,6 +260,7 @@ void DigitaltwinsWidget::dpWidInit()
 	VerticalLayout->addLayout(HorinztalLayout9);
 	VerticalLayout->addLayout(HorinztalLayout6);
 	VerticalLayout->addLayout(HorinztalLayout7);
+	VerticalLayout->addLayout(HorinztalLayoutError);
 
 
 	this->setLayout(VerticalLayout);
@@ -290,7 +301,20 @@ void DigitaltwinsWidget::ClickButtonInitMatch()
 			myProcess->start("cmd.exe", argument);
 			DCPSopen = true;
 		}
-		code = ((DocumentModel*)m_doc)->InitSubsAndListner(MethodID);
+
+		
+		if (errorMonitorDlg != nullptr && errorMonitorDlg->isStart()) {
+			// 在此设定故障监测线程的数据
+			ErrorMonitorThread* errorMonitorThread = ((DocumentModel*)m_doc)->getErrorMonitorThread();
+			errorMonitorThread->setParaName(errorMonitorDlg->getParaName());
+			errorMonitorThread->setClassifierPath(errorMonitorDlg->getClassifierPath());
+			errorMonitorThread->setWindowLength(errorMonitorDlg->getWindowLength());
+			errorMonitorThread->SetDocumentModel((DocumentModel*)m_doc);
+			code = ((DocumentModel*)m_doc)->InitSubsAndListner(MethodID, true);
+		}
+		else {
+			code = ((DocumentModel*)m_doc)->InitSubsAndListner(MethodID, false);
+		}
 	}
 	if (code == 0)
 	{
@@ -535,6 +559,18 @@ void DigitaltwinsWidget::currentItemChangedSLOT(QTableWidgetItem* last, QTableWi
 		m_data[idx].first.sConfigFilePath = cur->text().toStdString();
 		break;
 	}
+}
+
+
+void DigitaltwinsWidget::ClickButtonErrorMonitor()
+{
+	//如果没有创建过就新建一个，创建过就不创建新的了
+	if (hasCreatedMonitorDlg == false)
+	{
+		errorMonitorDlg = new ErrorMonitorDlg();
+		hasCreatedMonitorDlg = true;
+	}
+	errorMonitorDlg->show();
 }
 
 //根据映射填充参数表
@@ -1258,4 +1294,156 @@ void DynamicChart::AddData(QList<QPointF> pointlist)
 {
 	for (int i = 0; i < pointlist.size(); i++)
 		series->append(pointlist.at(i).x(), pointlist.at(i).y());
+}
+
+
+ErrorMonitorDlg::ErrorMonitorDlg(QDialog* parent) : Parent(parent)
+{
+	// connect(this, SIGNAL(rep()), this, SLOT(SendParas()), Qt::BlockingQueuedConnection);
+	errorMonitorDlgInit();
+	setMinimumWidth(500);
+	setMinimumHeight(300);
+
+	// 设置窗体最大化和最小化
+	Qt::WindowFlags windowFlag = Qt::Dialog;
+	windowFlag |= Qt::WindowMinimizeButtonHint;
+	windowFlag |= Qt::WindowMaximizeButtonHint;
+	windowFlag |= Qt::WindowCloseButtonHint;
+	setWindowFlags(windowFlag);
+}
+
+ErrorMonitorDlg::~ErrorMonitorDlg()
+{
+
+}
+
+void ErrorMonitorDlg::errorMonitorDlgInit()
+{
+	setWindowTitle(tr("实时故障监测"));
+	BtnStyle = QString(
+		//正常状态
+		"QPushButton{"
+		"background-color:white;"//背景颜色和透明度
+		"color:black;"//字体颜色
+		"border: 2px inset rgb(128,128,128);"//边框宽度、样式以及颜色
+		"font: 18px;"//字体类型和字体大小
+		"text-align: left;"
+		"}"
+		//按下时的状态
+		"QPushButton:pressed{"
+		"background-color:rgb(255,255,255);"
+		"color:rgb(0,0,0);"
+		"}"
+		//下拉框
+		"QComboBox{"
+		"font: 18px;"
+		"}"
+	);
+
+	// 1.控件
+	// 参数名称
+	paraNameShow = new QLabel("监测参数名称：");
+	paraNameShow->setMinimumHeight(25);
+	paraNameShow->setFixedWidth(150);
+	paraNameEdit = new QLineEdit;
+	paraNameEdit->setReadOnly(false); //可编辑
+	paraNameEdit->setMinimumHeight(25);
+
+	// 分类器路径
+	classifierPathShow = new QLabel("分类器路径：");
+	classifierPathShow->setMinimumHeight(25);
+	classifierPathShow->setFixedWidth(150);
+	classifierPathEdit = new QLineEdit;
+	classifierPathEdit->setReadOnly(false); //可编辑
+	classifierPathEdit->setMinimumHeight(25);
+
+	// 采样窗口长度
+	windowLengthShow = new QLabel("采样窗口长度：");
+	windowLengthShow->setMinimumHeight(25);
+	windowLengthShow->setFixedWidth(150);
+	windowLengthEdit = new QDoubleSpinBox(this);
+	windowLengthEdit->setRange(0.1, 100);  // 范围
+	windowLengthEdit->setSingleStep(0.1); // 步长
+	windowLengthEdit->setValue(10);  // 当前值
+	windowLengthEdit->setWrapping(true);  // 开启循环
+	windowLengthEdit->setDecimals(1);  // 精度
+
+	// 开始和结束按钮
+	pushButtonStart = new QPushButton(this);
+	pushButtonStart->setText("开始监视");
+	pushButtonStart->setFixedSize(400, 25);
+	connect(pushButtonStart, SIGNAL(clicked()), this, SLOT(clickButtonSatrt()));
+
+	pushButtonEnd = new QPushButton(this);
+	pushButtonEnd->setText("结束监视");
+	pushButtonEnd->setFixedSize(400, 25);
+	connect(pushButtonEnd, SIGNAL(clicked()), this, SLOT(clickButtonEnd()));
+
+
+
+	// 布局
+	QVBoxLayout* VerticalLayout = new QVBoxLayout(this);//设置整体布局为垂直布局
+
+	QHBoxLayout* HorinztalLayout1 = new QHBoxLayout(this);
+	HorinztalLayout1->addWidget(paraNameShow);
+	HorinztalLayout1->addWidget(paraNameEdit);
+	QHBoxLayout* HorinztalLayout2 = new QHBoxLayout(this);
+	HorinztalLayout2->addWidget(classifierPathShow);
+	HorinztalLayout2->addWidget(classifierPathEdit);
+	QHBoxLayout* HorinztalLayout3 = new QHBoxLayout(this);
+	HorinztalLayout3->addWidget(windowLengthShow);
+	HorinztalLayout3->addWidget(windowLengthEdit);
+	QHBoxLayout* HorinztalLayout4 = new QHBoxLayout(this);
+	HorinztalLayout4->addWidget(pushButtonStart);
+	QHBoxLayout* HorinztalLayout5 = new QHBoxLayout(this);
+	HorinztalLayout5->addWidget(pushButtonEnd);
+
+
+	VerticalLayout->setSpacing(15);
+	VerticalLayout->addLayout(HorinztalLayout1);
+	VerticalLayout->addLayout(HorinztalLayout2);
+	VerticalLayout->addLayout(HorinztalLayout3);
+	VerticalLayout->addLayout(HorinztalLayout4);
+	VerticalLayout->addLayout(HorinztalLayout5);
+
+	this->setLayout(VerticalLayout);
+}
+
+
+void ErrorMonitorDlg::clickButtonStart() {
+	paraName = paraNameEdit->text().toStdString();
+	classifierPath = classifierPathEdit->text().toStdString();
+	if (paraName == "" || classifierPath == "") {
+		QMessageBox msgBox;
+		msgBox.setText("监视变量名或分类器路径为空！请重新设置！");
+		msgBox.exec();
+		return;
+	}
+	windowLength = windowLengthEdit->value();
+	isStartMonitor = true;
+}
+
+void ErrorMonitorDlg::clickButtonEnd() {
+	isStartMonitor = false;
+}
+
+void ErrorMonitorDlg::paraNameErrorMsg() {
+	QMessageBox msgBox;
+	msgBox.setText("在接收参数中找不到该参数！");
+	msgBox.exec();
+	return;
+}
+
+void ErrorMonitorDlg::classifierPathErrorMsg() {
+	QMessageBox msgBox;
+	msgBox.setText("找不到该分类器路径！");
+	msgBox.exec();
+	return;
+}
+
+void ErrorMonitorDlg::errorAlarmMsg() {
+	QMessageBox msgBox;
+	msgBox.setText("系统故障告警！");
+	msgBox.exec();
+	return;
 }

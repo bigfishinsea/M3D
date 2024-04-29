@@ -6,9 +6,9 @@
 
 using namespace std;
 
-class LoadModule {
+class MyLoadModule {
 public:
-	LoadModule(const std::string& model_path, bool use_gpu = true);
+	MyLoadModule(const std::string& model_path, bool use_gpu = true);
 	torch::jit::script::Module module_;
 	torch::Device device_;
 };
@@ -19,7 +19,7 @@ public:
 	~NeuralNetworkInfo();
 
 	void initNetModule();            //初始化网络模型
-	LoadModule* getNetModule() {
+	MyLoadModule* getNetModule() {
 		return netModule;
 	}
 
@@ -30,5 +30,5 @@ public:
 	vector<string> inputVarNames;    //神经网络输入参数名称
 	vector<string> outputVarNames;   //神经网络输出参数名称
 private:
-	LoadModule* netModule = nullptr;
+	MyLoadModule* netModule = nullptr;
 };

@@ -1,8 +1,8 @@
 #include "NeuralNetworkInfo.h"
 
 //------------------------------------------------------------
-//LoadModule
-LoadModule::LoadModule(const std::string& model_path, bool use_gpu) :device_(torch::kCPU)
+//MyLoadModule
+MyLoadModule::MyLoadModule(const std::string& model_path, bool use_gpu) :device_(torch::kCPU)
 {
 	if (torch::cuda::is_available() && use_gpu)
 	{
@@ -44,6 +44,6 @@ void NeuralNetworkInfo::initNetModule() {
 	if (sNetworkFilePath == "") {
 		return;
 	}
-	netModule = new LoadModule(sNetworkFilePath);
+	netModule = new MyLoadModule(sNetworkFilePath);
 	return;
 }
