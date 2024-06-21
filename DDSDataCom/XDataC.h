@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // D:\opendds\ACE_wrappers\TAO\TAO_IDL\be\be_codegen.cpp:149
 
-#ifndef _TAO_IDL_XDATAC_AOFFNY_H_
-#define _TAO_IDL_XDATAC_AOFFNY_H_
+#ifndef _TAO_IDL_XDATAC_0JV5UD_H_
+#define _TAO_IDL_XDATAC_0JV5UD_H_
 
 #include /**/ "ace/pre.h"
 

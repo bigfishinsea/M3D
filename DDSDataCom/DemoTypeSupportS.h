@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // D:\opendds\ACE_wrappers\TAO\TAO_IDL\be\be_codegen.cpp:451
 
-#ifndef _TAO_IDL_DEMOTYPESUPPORTS_ZE6O7K_H_
-#define _TAO_IDL_DEMOTYPESUPPORTS_ZE6O7K_H_
+#ifndef _TAO_IDL_DEMOTYPESUPPORTS_ULXDVA_H_
+#define _TAO_IDL_DEMOTYPESUPPORTS_ULXDVA_H_
 
 #include /**/ "ace/pre.h"
 

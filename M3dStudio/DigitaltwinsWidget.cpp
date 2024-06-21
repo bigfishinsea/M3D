@@ -1372,7 +1372,7 @@ void ErrorMonitorDlg::errorMonitorDlgInit()
 	pushButtonStart = new QPushButton(this);
 	pushButtonStart->setText("开始监视");
 	pushButtonStart->setFixedSize(400, 25);
-	connect(pushButtonStart, SIGNAL(clicked()), this, SLOT(clickButtonSatrt()));
+	connect(pushButtonStart, SIGNAL(clicked()), this, SLOT(clickButtonStart()));
 
 	pushButtonEnd = new QPushButton(this);
 	pushButtonEnd->setText("结束监视");

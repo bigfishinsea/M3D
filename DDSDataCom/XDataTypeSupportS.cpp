@@ -26,8 +26,8 @@
 // TAO_IDL - Generated from
 // D:\opendds\ACE_wrappers\TAO\TAO_IDL\be\be_codegen.cpp:635
 
-#ifndef _TAO_IDL_XDATATYPESUPPORTS_XHFFUL_CPP_
-#define _TAO_IDL_XDATATYPESUPPORTS_XHFFUL_CPP_
+#ifndef _TAO_IDL_XDATATYPESUPPORTS_NLYMDN_CPP_
+#define _TAO_IDL_XDATATYPESUPPORTS_NLYMDN_CPP_
 
 
 #include "XDataTypeSupportS.h"

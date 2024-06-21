@@ -30,6 +30,11 @@ void ErrorMonitorThread::run() {
 		Sleep(500);
 	}
 
+	// 做视频用，实际使用过程这里要删
+	Sleep(60000);
+	emit errorAlarm();
+	return;
+
 	vector<string> parameternames = m_pStoredData->GetParameterNmaes();
 	int paraIdx = -1;
 	for (int i = 0; i < parameternames.size(); i++) {
